@@ -2,18 +2,26 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 export default function App () {
-  const [quotes, setQuotes] = useState();
+  const [quote, setQuote] = useState();
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    fetch('https://quote-garden.onrender.com/api/v3/quotes')
+    setLoading(true)
+    fetch('https://quote-garden.onrender.com/api/v3/quotes/random')
       .then(res => res.json())
-      .then(data => setQuotes(data))
+      .then(data => {
+        setQuote(data.data[0]);
+        setLoading(false);
+      })
   }, [])
 
-  console.log(quotes)
-  return(
+  console.log(quote)
+
+  if(loading) return <h1>loading...</h1>
+  
+   return(
     <main>
-      <h1>Hola mundillo</h1>
+      {/* <h1>{quote.quoteText}</h1> */}
     </main>
   )
 }
