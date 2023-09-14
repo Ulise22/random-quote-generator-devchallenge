@@ -32,18 +32,22 @@ export default function App () {
 
   if(loading) return <h1>Loading...</h1>
   
-  if(page == 0){ return(
+  return(
     <main>
-      <h1>{quote?.quoteText}</h1>
-      <div>
-        <p onClick={() => setPage(1)}> {quote?.quoteAuthor} </p>
-        <p> {quote?.quoteGenre} </p>
-      </div>
-      <button onClick={() => setRandomQuote(true)}>Random</button>
-    </main>
-  )} else {
-    return(
-      <main>
+      { page == 0 ? 
+      <section>
+        <div className='quote__container'>
+          <span className='quote__line'></span>
+          <h1 className='quote'>{quote?.quoteText}</h1>
+        </div>
+        <div>
+          <p onClick={() => setPage(1)}> {quote?.quoteAuthor} </p>
+          <p> {quote?.quoteGenre} </p>
+        </div>
+        <button onClick={() => setRandomQuote(true)}>Random</button>
+      </section> 
+      : 
+      <section>
         <button onClick={() => setPage(0)}>Random</button>
         <h1> {quote?.quoteAuthor} </h1>
         <ul>
@@ -55,7 +59,11 @@ export default function App () {
             )
           }) }
         </ul>
-      </main>
-    )
-  }
+      </section> }
+
+      <footer>
+        <p>created by <a target='_Blank' href='https://github.com/Ulise22'>Ulises</a> - devChallenges.io</p>
+      </footer>
+    </main>
+  )
 }
