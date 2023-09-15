@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { Quote } from './components/types';
+import { Quote } from './components/types/types';
+import QuoteContainer from './components/QuoteContainer';
+import QuoteList from './components/QuotesList';
+import Footer from './components/Footer';
 
 export default function App () {
   const [quote, setQuote] = useState<Quote>();
@@ -32,47 +35,16 @@ export default function App () {
     setRandomQuote(true)
   }
 
-  //console.log(quote)
-  console.log(authorQuotes)
-
   if(loading) return <h1>Loading...</h1>
   
   return(
     <main>
       { page == 0 ? 
-      <section className='content__container'>
-        <div className='quote__container'>
-          <h1 className='quote'>{quote?.quoteText}</h1>
-        </div>
-        <article className='author__article' onClick={() => setPage(1)}>
-          <div className='author__container'>
-            <p className='author__name'> {quote?.quoteAuthor} </p>
-            <p className='author__genre'> {quote?.quoteGenre} </p>
-          </div>
-          <span className="material-icons">arrow_right_alt</span>
-        </article>
-        <button className='random-btn' onClick={() => setRandomQuote(true)}>random<span className="material-icons">autorenew</span></button>
-      </section> 
+      <QuoteContainer quote={quote} changePage={setPage} changeRandomQuote={setRandomQuote} />
       : 
-      <section className='questlist__container'>
-        <button className='random-btn' onClick={backToHomepage}>random<span className="material-icons">autorenew</span></button>
-        <h1 className='questlist__title'> {quote?.quoteAuthor} </h1>
-        <ul className='questlist'>
-          { authorQuotes?.map(quote => {
-            return(
-              <li className='list__item' key={quote._id}>
-                <div className='quote__container'>
-                  <h1 className='quote'>{quote?.quoteText}</h1>
-                </div>
-              </li>
-            )
-          }) }
-        </ul>
-      </section> }
+      <QuoteList quote={quote} backToHomepage={backToHomepage} authorQuotes={authorQuotes} /> }
 
-      <footer>
-        <p className='footer__text'>created by <a target='_Blank' href='https://github.com/Ulise22'>Ulises</a> - devChallenges.io</p>
-      </footer>
+      <Footer />
     </main>
   )
 }
