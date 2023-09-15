@@ -27,6 +27,11 @@ export default function App () {
         .then(data => setAuthorQuotes(data.data))
   },[quote])
 
+  const backToHomepage = () => {
+    setPage(0)
+    setRandomQuote(true)
+  }
+
   //console.log(quote)
   console.log(authorQuotes)
 
@@ -35,26 +40,30 @@ export default function App () {
   return(
     <main>
       { page == 0 ? 
-      <section>
+      <section className='content__container'>
         <div className='quote__container'>
-          <span className='quote__line'></span>
           <h1 className='quote'>{quote?.quoteText}</h1>
         </div>
-        <div>
-          <p onClick={() => setPage(1)}> {quote?.quoteAuthor} </p>
-          <p> {quote?.quoteGenre} </p>
-        </div>
-        <button onClick={() => setRandomQuote(true)}>Random</button>
+        <article className='author__article' onClick={() => setPage(1)}>
+          <div className='author__container'>
+            <p className='author__name'> {quote?.quoteAuthor} </p>
+            <p className='author__genre'> {quote?.quoteGenre} </p>
+          </div>
+          <span className="material-icons">arrow_right_alt</span>
+        </article>
+        <button className='random-btn' onClick={() => setRandomQuote(true)}>random<span className="material-icons">autorenew</span></button>
       </section> 
       : 
-      <section>
-        <button onClick={() => setPage(0)}>Random</button>
-        <h1> {quote?.quoteAuthor} </h1>
-        <ul>
+      <section className='questlist__container'>
+        <button className='random-btn' onClick={backToHomepage}>random<span className="material-icons">autorenew</span></button>
+        <h1 className='questlist__title'> {quote?.quoteAuthor} </h1>
+        <ul className='questlist'>
           { authorQuotes?.map(quote => {
             return(
-              <li key={quote._id}>
-                <h2> {quote.quoteText} </h2>
+              <li className='list__item' key={quote._id}>
+                <div className='quote__container'>
+                  <h1 className='quote'>{quote?.quoteText}</h1>
+                </div>
               </li>
             )
           }) }
@@ -62,7 +71,7 @@ export default function App () {
       </section> }
 
       <footer>
-        <p>created by <a target='_Blank' href='https://github.com/Ulise22'>Ulises</a> - devChallenges.io</p>
+        <p className='footer__text'>created by <a target='_Blank' href='https://github.com/Ulise22'>Ulises</a> - devChallenges.io</p>
       </footer>
     </main>
   )
