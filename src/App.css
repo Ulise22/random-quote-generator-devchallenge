@@ -120,3 +120,7 @@ body {
   font-weight: 700;
   color: #828282;
 }
+
+@media screen and (max-width: 770px) {
+  
+}
