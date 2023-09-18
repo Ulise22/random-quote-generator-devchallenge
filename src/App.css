@@ -14,7 +14,6 @@ body {
 .quote__container {
   width: 722px;
   display: flex;
-  gap: 100px;
   align-items: center;
 }
 
@@ -122,5 +121,76 @@ body {
 }
 
 @media screen and (max-width: 770px) {
+  .content__container {
+    width: 80%;
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  .quote__container {
+    width: 450px;
+  }
+
+  .quote {
+    font-size: 24px;
+    padding-left: 40px;
+    border-left: 6px solid #F7DF94;
+  }
+
+  .author__article {
+    width: 450px;
+    height: 120px;
+    margin-left: 0;
+    transition: all .4s ease;
+  }
+
+  .author__article span {
+    font-size: 28px;
+  }
   
+  .author__name {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .questlist__title {
+    font-size: 28px;
+    margin-right: 150px;
+  }
+
+  .questlist__container {
+    margin-left: -100px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .content__container {
+    width: 275px;
+  }
+
+  .quote__container {
+    width: 275px;
+  }
+
+  .quote {
+    padding-left: 30px;
+  }
+
+  .author__article {
+    width: 275px;
+    height: 100px;
+  }
+
+  .author__article span {
+    font-size: 24px;
+  }
+  
+  .author__name {
+    font-size: 18px;
+  }
+
+  .questlist__title {
+    font-size: 20px;
+    margin-left: 120px;
+  }
 }
