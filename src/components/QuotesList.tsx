@@ -1,6 +1,6 @@
 import { Quote } from "./types/types"
 
-export default function QuoteList ({authorQuotes, quote, backToHomepage} : {authorQuotes: Quote[], quote: Quote, backToHomepage: () => void}) {
+export default function QuoteList ({authorQuotes, quote, backToHomepage} : {authorQuotes: Quote[] | undefined, quote: Quote | undefined, backToHomepage: () => void}) {
     return(
         <section className='questlist__container'>
         <button className='random-btn' onClick={backToHomepage}>random<span className="material-icons">autorenew</span></button>

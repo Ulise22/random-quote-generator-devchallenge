@@ -1,6 +1,6 @@
 import { Quote } from "./types/types";
 
-export default function QuoteContainer ({quote, changePage, changeRandomQuote} : {quote: Quote, changePage: (page: number) => void, changeRandomQuote: (randomQuote: boolean) => void}) {
+export default function QuoteContainer ({quote, changePage, changeRandomQuote} : {quote: Quote | undefined, changePage: (page: number) => void, changeRandomQuote: (randomQuote: boolean) => void}) {
     return(
         <section className='content__container'>
         <div className='quote__container'>
